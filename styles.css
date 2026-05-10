@@ -1,2 +1,45 @@
 
 /* Your CSS Code here. */
+/* Container properties */
+.holder {
+    display: flex;
+    flex-direction: row;
+    /* First and last items touch the ends, space distributed between */
+    justify-content: space-between;
+    /* Items wrap to the next line instead of shrinking */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Base item styling */
+.item {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+}
+
+/* Specific ordering to match the image sequence (3, 1, 2) */
+
+.item:nth-child(1) { 
+    background-color: red; 
+    order: 2; /* Moves item 1 to the middle */
+}
+
+.item:nth-child(2) { 
+    background-color: blue; 
+    order: 3; /* Moves item 2 to the end */
+}
+
+.item:nth-child(3) { 
+    background-color: green; 
+    order: 1; /* Moves item 3 to the beginning */
+}
+
+/* For the second image illustration (Items 4-7) */
+.item:nth-child(n+4) {
+    background-color: green;
+    order: 1; /* Keeps them grouped with item 3 */
+}
