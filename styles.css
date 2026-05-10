@@ -1,17 +1,19 @@
-
-/* Your CSS Code here. */
-/* Container properties */
+/* Container Properties */
 .holder {
     display: flex;
     flex-direction: row;
-    /* First and last items touch the ends, space distributed between */
+    
+    /* Requirement: First and last items touch the ends of the screen */
     justify-content: space-between;
-    /* Items wrap to the next line instead of shrinking */
+    
+    /* Requirement: Items don't squash; they move to the next row */
     flex-wrap: wrap;
+    
     width: 100%;
+    background-color: #ffffff;
 }
 
-/* Base item styling */
+/* Base Item Styling */
 .item {
     width: 150px;
     height: 150px;
@@ -19,27 +21,29 @@
     align-items: center;
     justify-content: center;
     font-size: 80px;
+    color: #000;
 }
 
-/* Specific ordering to match the image sequence (3, 1, 2) */
+/* --- LOGIC TO MATCH THE IMAGES --- */
 
-.item:nth-child(1) { 
-    background-color: red; 
-    order: 2; /* Moves item 1 to the middle */
-}
-
-.item:nth-child(2) { 
-    background-color: blue; 
-    order: 3; /* Moves item 2 to the end */
-}
-
-.item:nth-child(3) { 
-    background-color: green; 
-    order: 1; /* Moves item 3 to the beginning */
-}
-
-/* For the second image illustration (Items 4-7) */
-.item:nth-child(n+4) {
+/* Green Items (3, 4, 5, 6, 7) - Appear first visually */
+.item:nth-child(3),
+.item:nth-child(4),
+.item:nth-child(5),
+.item:nth-child(6),
+.item:nth-child(7) {
     background-color: green;
-    order: 1; /* Keeps them grouped with item 3 */
+    order: 1; 
+}
+
+/* Red Item (1) - Appears after the green items */
+.item:nth-child(1) {
+    background-color: red;
+    order: 2;
+}
+
+/* Blue Item (2) - Appears last (and wraps to the next row) */
+.item:nth-child(2) {
+    background-color: blue;
+    order: 3;
 }
